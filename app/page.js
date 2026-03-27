@@ -22,6 +22,11 @@ export default function Home() {
       title: "Image Compressor",
       link: "/image-compressor",
       desc: "Reduce image file size"
+    },
+    {
+      title: "Image inhancer",
+      link: "/increase-image-size",
+      desc: "Increase image file size"
     }
   ]
 

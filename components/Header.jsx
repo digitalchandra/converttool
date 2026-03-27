@@ -70,6 +70,9 @@ export default function Header() {
           <Link href="/image-compressor" className="block">
             Image Compressor
           </Link>
+          <Link href="/increase-image-size" className="block">
+          Increase Image Size
+          </Link>
 
         </div>
 
