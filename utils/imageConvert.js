@@ -18,4 +18,19 @@ export async function convertImage(buffer,type){
         return await sharp(buffer).jpeg({quality:60}).toBuffer()
     }
 
+    // ⭐ Increase Image Size / Quality
+  if (type === "increase-size") {
+
+    const { width, height, quality = 100 } = options
+
+    return await sharp(buffer)
+      .resize(width, height, {
+        fit: "fill"
+      })
+      .jpeg({
+        quality: quality
+      })
+      .toBuffer()
+  }
+
 }

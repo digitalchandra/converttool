@@ -9,7 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "html-react-parser": "^5.2.17",
     "next": "16.1.6",
+    "pdfjs-dist": "^5.5.207",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-dropzone": "^15.0.0",

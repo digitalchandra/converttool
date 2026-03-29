@@ -1,5 +1,6 @@
 import UploadBox from "@/components/UploadBox"
 import { getConverterContent } from "@/services/api"
+import parse from "html-react-parser"
 
 export async function generateMetadata(){
 
@@ -23,23 +24,22 @@ export default async function Page(){
 
   return (
 
-    <div className="max-w-5xl mx-auto">
+    <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="lg:col-span-3">
+      <h1 className="text-4xl font-bold text-center mb-8">
+          {parse(post?.title?.rendered || "JPEG to PNG Converter")}
+        </h1>
+            <UploadBox type="jpeg-to-png" />
 
-      <h1
-        className="text-4xl font-bold text-center mb-8"
-        dangerouslySetInnerHTML={{
-          __html:post?.title?.rendered || "JPEG to PNG Converter"
-        }}
-      />
+        <div className="prose max-w-none mt-12">
+          {parse(post?.content?.rendered || "")}
+        </div>
+      </div>
+  
 
-      <UploadBox type="jpeg-to-png" />
 
-      <div
-        className="prose max-w-none mt-12"
-        dangerouslySetInnerHTML={{
-          __html:post?.content?.rendered || ""
-        }}
-      />
+
+
 
     </div>
 

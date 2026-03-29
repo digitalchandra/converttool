@@ -14,9 +14,9 @@ export default function Page(){
         },
 
         {
-            title: "PNG to JPEG",
-            description: "Convert PNG images to JPEG format",
-            link: "/image/png-to-jpeg"
+            title: "PDF to Image",
+            description: "Convert Pdf images to JPEG format",
+            link: "/pdf/pdf-to-image"
             },
 
     ]
