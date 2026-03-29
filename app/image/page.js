@@ -39,23 +39,7 @@ export default function Page() {
       link: "/image/heic-to-jpg"
     },
 
-    {
-      title: "Image Resize",
-      description: "Resize image width and height online",
-      link: "/image/image-resize"
-    },
 
-    {
-      title: "Image Compress",
-      description: "Reduce image size without losing quality",
-      link: "/image/image-compress"
-    },
-
-    {
-      title: "Increase Image Size",
-      description: "Increase image resolution online",
-      link: "/image/increase-image-size"
-    }
 
   ]
 

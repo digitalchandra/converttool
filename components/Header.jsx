@@ -22,6 +22,9 @@ export default function Header() {
           <Link href="/image" className="hover:text-blue-600">
             Image Tools
           </Link>
+          <Link href="/imageresize" className="hover:text-blue-600">
+            Image Resize
+          </Link>
 
           <Link href="/pdf" className="hover:text-blue-600">
             PDF Tools
