@@ -1,4 +1,6 @@
 import ToolCard from "@/components/ToolCard"
+import { link } from "fs"
+import { title } from "process"
 
 export const metadata = {
   title: "Image Converter Tools",
@@ -38,6 +40,26 @@ export default function Page() {
       description: "Convert HEIC images to JPG format",
       link: "/image/heic-to-jpg"
     },
+    {
+      title:"GIF to JPG ",
+      description:"Convert GIF images to JPG format",
+      link: "/image/gif-to-jpg"
+    },
+    {
+      title:"JPG to WEBP ",
+      description:"Convert JPG images to WEBP format",
+      link:"/image/jpg-to-webp"
+    },
+    {
+      title:"PNG to WEBP",
+      description:"Convert PNG images to WEBP format",
+      link:"/image/png-to-webp"
+    },
+    {
+      title:"SVG to PNG",
+      description:"Convert SVG images to PNG format",
+      link :"/image/svg-to-png"
+    }
 
 
 

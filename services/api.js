@@ -1,5 +1,4 @@
-const BASE_URL = "https://converttool.io/hakubackend/wp-json/wp/v2"
-
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL
 export async function getConverterContent(endpoint){
 
   try{

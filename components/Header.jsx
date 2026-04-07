@@ -66,6 +66,9 @@ export default function Header() {
             <Link href="/image" onClick={() => setMenuOpen(false)}>
               Image Tools
             </Link>
+              <Link href="/imageresize" className="hover:text-blue-600">
+              Image Resize
+            </Link>
 
             <Link href="/pdf" onClick={() => setMenuOpen(false)}>
               PDF Tools

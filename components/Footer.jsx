@@ -34,19 +34,20 @@ export default function Footer(){
           <ul className="space-y-2 text-sm">
 
             <li>
-              <Link href="/png-to-jpeg">PNG to JPEG</Link>
+              <Link href="/image">Image Tools</Link>
             </li>
 
             <li>
-              <Link href="/jpeg-to-png">JPEG to PNG</Link>
+              <Link href="/imageresize">Image Resize</Link>
             </li>
 
             <li>
-              <Link href="/webp-to-jpeg">WEBP to JPEG</Link>
+              <Link href="/pdf">PDf Tools</Link>
             </li>
 
             <li>
-              <Link href="/image-compressor">Image Compressor</Link>
+              <Link href="/utility">
+              Developer Tools</Link>
             </li>
 
           </ul>
