@@ -4,25 +4,61 @@ import { v4 as uuid } from "uuid"
 import fs from "fs"
 import path from "path"
 
-export async function POST(req){
+export async function POST(req) {
+  try {
 
-  const data = await req.formData()
+    const data = await req.formData()
 
-  const file = data.get("file")
-  const type = data.get("type")
+    const file = data.get("file")
+    const type = data.get("type")
 
-  const bytes = await file.arrayBuffer()
-  const buffer = Buffer.from(bytes)
+    if (!file) {
+      return NextResponse.json({ error: "No file uploaded" }, { status: 400 })
+    }
 
-  const converted = await convertImage(buffer,type)
+    if (!type) {
+      return NextResponse.json({ error: "No conversion type provided" }, { status: 400 })
+    }
 
-  const name = uuid()+".jpg"
+    const bytes = await file.arrayBuffer()
+    const buffer = Buffer.from(bytes)
 
-  const filePath = path.join(process.cwd(),"public",name)
+    const converted = await convertImage(buffer, type)
 
-  fs.writeFileSync(filePath,converted)
+    if (!converted) {
+      return NextResponse.json({ error: "Image conversion failed" }, { status: 500 })
+    }
 
-  return NextResponse.json({
-    url:`/${name}`
-  })
+    // ✅ decide file extension
+    let ext = "jpg"
+
+    if (type === "jpeg-to-png") ext = "png"
+    if (type === "png-to-jpeg") ext = "jpg"
+    if (type === "webp-to-jpeg") ext = "jpg"
+    if (type === "jpg-to-webp") ext = "webp"
+    if (type === "png-to-webp") ext = "webp"
+    if (type === "svg-to-png") ext = "png"
+    if (type === "webp-to-png") ext = "png"
+    if (type === "webp-to-jpeg") ext = "jpg"
+    if (type === "heic-to-jpg") ext ="jpg"
+
+    const name = uuid() + "." + ext
+
+    const filePath = path.join(process.cwd(), "public", name)
+
+    fs.writeFileSync(filePath, converted)
+
+    return NextResponse.json({
+      url: `/${name}`
+    })
+
+  } catch (error) {
+
+    console.error("Conversion Error:", error)
+
+    return NextResponse.json(
+      { error: "Server error during conversion" },
+      { status: 500 }
+    )
+  }
 }

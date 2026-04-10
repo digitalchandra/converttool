@@ -3,9 +3,9 @@ import ServiceCard from "@/components/ServiceCard"
 export default function Home() {
 
 const imageConverters = [
-{ title:"PNG to JPG", link:"/png-to-jpg", desc:"Convert PNG images to JPG format instantly."},
-{ title:"JPG to PNG", link:"/jpeg-to-png", desc:"Convert JPG images to PNG online."},
-{ title:"WEBP to JPG", link:"/webp-to-jpg", desc:"Convert WEBP images to JPG easily."},
+{ title:"PNG to JPG", link:"/image/png-to-jpg", desc:"Convert PNG images to JPG format instantly."},
+{ title:"JPG to PNG", link:"/image/jpeg-to-png", desc:"Convert JPG images to PNG online."},
+{ title:"WEBP to JPG", link:"/image/webp-to-jpg", desc:"Convert WEBP images to JPG easily."},
 ]
 
 const imageResizer = [

@@ -35,7 +35,7 @@ export default function Page() {
         JPG to PNG Converter
         </h1>
 
-        <UploadBox type="png-to-jpeg" />
+        <UploadBox type="jpeg-to-png" />
 
         <div className="prose max-w-none mt-12">
         <p>

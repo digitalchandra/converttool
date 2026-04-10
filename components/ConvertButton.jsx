@@ -26,18 +26,31 @@ export default function ConvertButton({ file, type, onComplete }) {
         body: formData
       })
 
+      // check if request failed
+      if (!res.ok) {
+        throw new Error("Server error during conversion")
+      }
+
+      // safely parse JSON
       const data = await res.json()
 
-      if (onComplete) {
+      if (data?.url && onComplete) {
         onComplete(data.url)
+      } else {
+        throw new Error("Invalid response from server")
       }
 
     } catch (error) {
-      console.error(error)
-      alert("Conversion failed")
+
+      console.error("Conversion Error:", error)
+      alert("Conversion failed. Please try again.")
+
+    } finally {
+
+      setLoading(false)
+
     }
 
-    setLoading(false)
   }
 
   return (
@@ -53,4 +66,5 @@ export default function ConvertButton({ file, type, onComplete }) {
     </button>
 
   )
+
 }

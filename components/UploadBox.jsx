@@ -7,10 +7,14 @@ import ConvertButton from "./ConvertButton"
 export default function UploadBox({ type }) {
 
   const [file, setFile] = useState(null)
+  const [preview, setPreview] = useState(null)
   const [download, setDownload] = useState(null)
 
   const onDrop = (acceptedFiles) => {
-    setFile(acceptedFiles[0])
+    const selected = acceptedFiles[0]
+    setFile(selected)
+    setPreview(URL.createObjectURL(selected))
+    setDownload(null)
   }
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -19,65 +23,57 @@ export default function UploadBox({ type }) {
   })
 
   return (
-
     <div className="text-center">
 
       {/* Upload Box */}
-
       <div
         {...getRootProps()}
-        className="border-2 border-dashed border-gray-300 rounded-xl p-16 bg-white cursor-pointer hover:border-blue-500"
+        className="border-2 border-dashed border-gray-300 rounded-xl p-16 bg-white cursor-pointer"
       >
-
         <input {...getInputProps()} />
-
-        <div className="flex flex-col items-center">
-
-          <div className="text-5xl mb-4">⬆</div>
-
-          <p className="text-lg font-semibold">
-            Drag & Drop image here
-          </p>
-
-          <p className="text-gray-500 text-sm">
-            or click to upload
-          </p>
-
-        </div>
-
+        <p>Drag & Drop image here</p>
       </div>
 
-      {/* File Name */}
-
-      {file && (
-        <p className="mt-4 text-sm text-gray-600">
-          Selected: {file.name}
-        </p>
+      {/* Preview */}
+      {preview && (
+        <div className="mt-6">
+          <p className="font-semibold">Original Image</p>
+          <img
+            src={preview}
+            alt="preview"
+            className="w-32 h-32 object-contain mx-auto mt-2"
+          />
+        </div>
       )}
 
       {/* Convert Button */}
-
       <ConvertButton
         file={file}
         type={type}
         onComplete={setDownload}
       />
 
-      {/* Download */}
-
+      {/* Converted Result */}
       {download && (
+        <div className="mt-8">
 
-        <div className="mt-6">
+          <p className="font-semibold">Converted Image</p>
+
+          <img
+            src={download}
+            alt="converted"
+            className="w-32 h-32 object-contain mx-auto mt-2"
+          />
 
           <a
             href={download}
-            className="bg-green-600 text-white px-6 py-3 rounded-lg"
+            download
+            className="inline-block mt-4 bg-green-600 text-white px-6 py-2 rounded-lg"
           >
             Download Image
           </a>
 
         </div>
-
       )}
 
     </div>
