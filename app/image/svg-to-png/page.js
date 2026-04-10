@@ -1,6 +1,7 @@
 import UploadBox from "@/components/UploadBox"
 import HowToConvert from "../../../components/HowToConvert"
 import Benifits from "../../../components/Benifits"
+import ConverterSidebar from "../../../components/ConverterSidebar"
 
 export const metadata = {
   title: "PNG to JPEG Converter – Free Online Image Converter",
@@ -55,6 +56,10 @@ export default function Page() {
         </div>
 
       </div>
+        {/* RIGHT SIDE - SIDEBAR */}
+               <div className="lg:col-span-1">
+                    <ConverterSidebar currentTool="svg-to-png" />
+                </div>
     </div>
 
 

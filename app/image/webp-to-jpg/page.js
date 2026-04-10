@@ -1,7 +1,7 @@
 import UploadBox from "@/components/UploadBox"
 import HowToConvert from "../../../components/HowToConvert"
 import Benifits from "../../../components/Benifits"
-
+import ConverterSidebar from "../../../components/ConverterSidebar"
 export const metadata = {
   title: "WEBP to JPG Converter – Free Online Image Converter",
   description: "Convert WEBP images to JPG online free with our fast tool."
@@ -55,6 +55,10 @@ export default function Page() {
         </div>
 
       </div>
+        {/* RIGHT SIDE - SIDEBAR */}
+               <div className="lg:col-span-1">
+                    <ConverterSidebar currentTool="webp-to-jpg" />
+                </div>
     </div>
 
   )

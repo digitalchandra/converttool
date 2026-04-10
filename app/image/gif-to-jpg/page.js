@@ -1,6 +1,7 @@
 import UploadBox from "@/components/UploadBox"
 import HowToConvert from "../../../components/HowToConvert"
 import Benifits from "../../../components/Benifits"
+import ConverterSidebar from "../../../components/ConverterSidebar"
 
 export const metadata = {
   title: "PNG to JPEG Converter – Free Online Image Converter",
@@ -28,6 +29,7 @@ const steps = [
 
 export default function Page() {
   return (
+    <>
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
       <div className="lg:col-span-3">
 
@@ -55,8 +57,16 @@ export default function Page() {
         </div>
 
       </div>
+        {/* RIGHT SIDE - SIDEBAR */}
+        <div className="lg:col-span-1">
+        <ConverterSidebar currentTool="gif-to-jpg" />
+
+        </div>
     </div>
 
 
+
+
+</>
   )
 }
