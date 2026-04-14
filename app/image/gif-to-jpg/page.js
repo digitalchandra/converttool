@@ -59,7 +59,7 @@ export default function Page() {
       </div>
         {/* RIGHT SIDE - SIDEBAR */}
         <div className="lg:col-span-1">
-        <ConverterSidebar currentTool="gif-to-jpg" />
+          <ConverterSidebar currentTool="gif-to-jpg" />
 
         </div>
     </div>

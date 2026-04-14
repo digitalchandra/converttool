@@ -1,8 +1,4 @@
-import { NextResponse } from "next/server"
 import { convertImage } from "@/utils/imageConvert"
-import { v4 as uuid } from "uuid"
-import fs from "fs"
-import path from "path"
 
 export async function POST(req) {
   try {
@@ -13,11 +9,11 @@ export async function POST(req) {
     const type = data.get("type")
 
     if (!file) {
-      return NextResponse.json({ error: "No file uploaded" }, { status: 400 })
+      return new Response(JSON.stringify({ error: "No file uploaded" }), { status: 400 })
     }
 
     if (!type) {
-      return NextResponse.json({ error: "No conversion type provided" }, { status: 400 })
+      return new Response(JSON.stringify({ error: "No conversion type provided" }), { status: 400 })
     }
 
     const bytes = await file.arrayBuffer()
@@ -26,38 +22,33 @@ export async function POST(req) {
     const converted = await convertImage(buffer, type)
 
     if (!converted) {
-      return NextResponse.json({ error: "Image conversion failed" }, { status: 500 })
+      return new Response(JSON.stringify({ error: "Image conversion failed" }), { status: 500 })
     }
 
-    // ✅ decide file extension
-    let ext = "jpg"
+    let contentType = "image/jpeg"
 
-    if (type === "jpeg-to-png") ext = "png"
-    if (type === "png-to-jpeg") ext = "jpg"
-    if (type === "webp-to-jpeg") ext = "jpg"
-    if (type === "jpg-to-webp") ext = "webp"
-    if (type === "png-to-webp") ext = "webp"
-    if (type === "svg-to-png") ext = "png"
-    if (type === "webp-to-png") ext = "png"
-    if (type === "webp-to-jpeg") ext = "jpg"
-    if (type === "heic-to-jpg") ext ="jpg"
+    if (type === "jpeg-to-png") contentType = "image/png"
+    if (type === "png-to-jpeg") contentType = "image/jpeg"
+    if (type === "webp-to-jpeg") contentType = "image/jpeg"
+    if (type === "jpg-to-webp") contentType = "image/webp"
+    if (type === "png-to-webp") contentType = "image/webp"
+    if (type === "svg-to-png") contentType = "image/png"
+    if (type === "webp-to-png") contentType = "image/png"
+    if (type === "heic-to-jpg") contentType = "image/jpeg"
 
-    const name = uuid() + "." + ext
-
-    const filePath = path.join(process.cwd(), "public", name)
-
-    fs.writeFileSync(filePath, converted)
-
-    return NextResponse.json({
-      url: `/${name}`
+    return new Response(converted, {
+      headers: {
+        "Content-Type": contentType,
+        "Content-Disposition": "attachment"
+      }
     })
 
   } catch (error) {
 
     console.error("Conversion Error:", error)
 
-    return NextResponse.json(
-      { error: "Server error during conversion" },
+    return new Response(
+      JSON.stringify({ error: "Server error during conversion" }),
       { status: 500 }
     )
   }
