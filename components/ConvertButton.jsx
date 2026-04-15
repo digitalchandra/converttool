@@ -26,20 +26,17 @@ export default function ConvertButton({ file, type, onComplete }) {
         body: formData
       })
 
-      // check if request failed
       if (!res.ok) {
         throw new Error("Server error during conversion")
       }
-    
 
-      // safely parse JSON
+      // receive converted image as blob
       const blob = await res.blob()
-      const url= URL.createObjectURL(blob)
+
+      const url = URL.createObjectURL(blob)
 
       if (onComplete) {
         onComplete(url)
-      } else {
-        throw new Error("Invalid response from server")
       }
 
     } catch (error) {
