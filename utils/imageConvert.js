@@ -14,7 +14,7 @@ export async function convertImage(buffer, type) {
   }
 
   // WEBP → JPEG
-  if (type === "webp-to-jpeg") {
+  if (type === "webp-to-jpg") {
     return await sharp(buffer).jpeg().toBuffer()
   }
 

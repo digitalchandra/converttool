@@ -4,26 +4,26 @@ import Benifits from "../../../components/Benifits"
 import ConverterSidebar from "../../../components/ConverterSidebar"
 
 export const metadata = {
-  title: "PNG to JPEG Converter – Free Online Image Converter",
-  description: "Convert PNG images to JPEG online free with our fast tool."
+  title: "WEBP to JPG Converter – Free Online Image Converter",
+  description: "Convert WEBP images to JPG online free with our fast tool."
 }
 
 
 const steps = [
   {
-    title: "Upload or Drag and Drop Your JPG Image",
+    title: "Upload or Drag and Drop Your WEBP Image",
     description:
-      "Upload your JPG image using the upload box or simply drag and drop the file to start the conversion process."
+      "Upload your WEBP image using the upload box or simply drag and drop the file to start the conversion process."
   },
   {
-    title: "Convert JPG to PNG Instantly",
+    title: "Convert WEBP to JPG Instantly",
     description:
-      "After your JPG image is uploaded, click the convert button. Our tool will quickly convert your JPG file into PNG format."
+      "After your WEBP image is uploaded, click the convert button. Our tool will quickly convert your WEBP file into JPEG format."
   },
   {
-    title: "Download Your PNG Image",
+    title: "Download Your JEG Image",
     description:
-      "Once the conversion is complete, download your newly converted PNG image directly to your device."
+      "Once the conversion is complete, download your newly converted JPG image directly to your device."
   }
 ]
 
@@ -33,20 +33,20 @@ export default function Page() {
       <div className="lg:col-span-3">
 
         <h1 className="text-4xl font-bold text-center mb-8">
-        WEBP to JPEG Converter
+        WEBP to JPG Converter
         </h1>
 
-        <UploadBox type="webp-to-jpeg" />
+        <UploadBox type="webp-to-jpg" />
 
         <div className="prose max-w-none mt-12">
         <p>
-          Our JPG to PNG converter allows you to quickly convert JPG images into PNG format online.
-          Simply upload your JPG image, and the tool will instantly convert it to PNG while preserving
-          image quality and transparency support. Download the converted PNG file to your device in seconds.
+          Our WEBP to JPG converter allows you to quickly convert WEBP images into JPG format online.
+          Simply upload your WEBP image, and the tool will instantly convert it to JPG while preserving
+          image quality and transparency support. Download the converted JPG file to your device in seconds.
         </p>
 
             <HowToConvert
-              title="How to Convert PNG to JPEG"
+              title="How to Convert WEBP to JPG"
               steps={steps}
             />
             <HowToConvert/>
@@ -58,7 +58,7 @@ export default function Page() {
       </div>
         {/* RIGHT SIDE - SIDEBAR */}
                <div className="lg:col-span-1">
-                    <ConverterSidebar currentTool="webp-to-jpeg" />
+                    <ConverterSidebar currentTool="webp-to-jpg" />
                 </div>
     </div>
 

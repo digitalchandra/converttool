@@ -30,7 +30,7 @@ export async function POST(req) {
 
     if (type === "jpeg-to-png") contentType = "image/png"
     if (type === "png-to-jpeg") contentType = "image/jpeg"
-    if (type === "webp-to-jpeg") contentType = "image/jpeg"
+    if (type === "webp-to-jpg") contentType = "image/jpg"
     if (type === "jpg-to-webp") contentType = "image/webp"
     if (type === "png-to-webp") contentType = "image/webp"
     if (type === "svg-to-png") contentType = "image/png"
