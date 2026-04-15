@@ -30,12 +30,14 @@ export default function ConvertButton({ file, type, onComplete }) {
       if (!res.ok) {
         throw new Error("Server error during conversion")
       }
+    
 
       // safely parse JSON
-      const data = await res.json()
+      const blob = await res.blob()
+      const url= URL.createObjectURL(blob)
 
-      if (data?.url && onComplete) {
-        onComplete(data.url)
+      if (onComplete) {
+        onComplete(url)
       } else {
         throw new Error("Invalid response from server")
       }

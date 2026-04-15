@@ -1,3 +1,4 @@
+export const runtime = "nodejs"
 import { convertImage } from "@/utils/imageConvert"
 
 export async function POST(req) {
