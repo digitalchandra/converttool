@@ -6,7 +6,13 @@ import { validateFile } from "@/utils/security"
 export async function POST(req) {
     try{
         const data = req.formData()
-        const files = data.getAll("files")
+        const files = data.get("file")
+        const pdf = await PDFDocument.load(bytes)
+        const newPdf = await PDFDocument.create()
+        const [page] = await  newPdf.copyPages(pdf, [0])
+        newPdf.addPage(page)
+        const bytes = await file.arrayBuffer()
+    
 
         if(files.lenght <2){
             return NextResponse.json({error:"Upload At Last 2 PDFs"})
@@ -17,9 +23,7 @@ export async function POST(req) {
         for(const file of files){
             validateFile(file, ["application/pdf"])
 
-            const bytes = await file.arrayBuffer()
-
-            const pdf = await PDFDocument.load(bytes)
+           
 
             const pages = await margePdf.copyPages(pdf, pdf.getPageIndices())
 
