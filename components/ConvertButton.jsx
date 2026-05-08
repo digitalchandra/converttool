@@ -8,8 +8,12 @@ export default function ConvertButton({ file, type, onComplete }) {
 
   const handleConvert = async () => {
 
-    if (!file) {
-      alert("Please upload an image first")
+    if (!file || (Array.isArray(file) && file.length === 0)) {
+      alert(
+        type === "marge-pdf"
+          ? "Please upload PDF files first"
+          : "Please upload an image first"
+      )
       return
     }
 
@@ -18,10 +22,29 @@ export default function ConvertButton({ file, type, onComplete }) {
     try {
 
       const formData = new FormData()
-      formData.append("file", file)
+
+      // Multiple files support
+      if (Array.isArray(file)) {
+
+        file.forEach((f) => {
+          formData.append("files", f)
+        })
+
+      } else {
+
+        formData.append("file", file)
+
+      }
+
       formData.append("type", type)
 
-      const res = await fetch("/api/convert", {
+      // Dynamic API Route
+      const apiRoute =
+        type === "merge-pdf"
+          ? "/api/merge-pdf"
+          : "/api/convert"
+
+      const res = await fetch(apiRoute, {
         method: "POST",
         body: formData
       })
@@ -30,7 +53,7 @@ export default function ConvertButton({ file, type, onComplete }) {
         throw new Error("Server error during conversion")
       }
 
-      // receive converted image as blob
+      // Receive converted file as blob
       const blob = await res.blob()
 
       const url = URL.createObjectURL(blob)
@@ -42,6 +65,7 @@ export default function ConvertButton({ file, type, onComplete }) {
     } catch (error) {
 
       console.error("Conversion Error:", error)
+
       alert("Conversion failed. Please try again.")
 
     } finally {
@@ -60,7 +84,13 @@ export default function ConvertButton({ file, type, onComplete }) {
       className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition disabled:opacity-50"
     >
 
-      {loading ? "Converting..." : "Convert Image"}
+      {
+        loading
+          ? "Processing..."
+          : type === "merge-pdf"
+          ? "Merge PDF"
+          : "Convert Image"
+      }
 
     </button>
 

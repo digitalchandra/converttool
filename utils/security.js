@@ -11,3 +11,4 @@ export function validateFile(file, allowedTypes, maxSizeMB = 10){
             throw new Error("Invalid File Types ")
         }
 }
+

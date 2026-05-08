@@ -1,44 +1,56 @@
-import {PDFDocument} from "pdf-lib"
+import { PDFDocument } from "pdf-lib"
 import { NextResponse } from "next/server"
 import { validateFile } from "@/utils/security"
 
-
 export async function POST(req) {
-    try{
-        const data = req.formData()
-        const files = data.get("file")
-        const pdf = await PDFDocument.load(bytes)
-        const newPdf = await PDFDocument.create()
-        const [page] = await  newPdf.copyPages(pdf, [0])
-        newPdf.addPage(page)
-        const bytes = await file.arrayBuffer()
-    
+  try {
 
-        if(files.lenght <2){
-            return NextResponse.json({error:"Upload At Last 2 PDFs"})
-        }
+    const data = await req.formData()
 
-        const mergePdf = await PDFDocument.create()
+    const files = data.getAll("files")
 
-        for(const file of files){
-            validateFile(file, ["application/pdf"])
-
-           
-
-            const pages = await margePdf.copyPages(pdf, pdf.getPageIndices())
-
-            pages.forEach(p => margePdf.save(p));
-        }
-        const pdfBytes = await mergePdf.save()
-        return new NextResponse(pdfBytes,{
-            headers:{
-                "Content -Type" : "application/pdf",
-                "Content-Disposition" : "attachment; filename=marge.pdf"
-            }
-        })
-      
-    }  catch(err){
-        return NextResponse.json({error : err.message})
+    if (!files || files.length < 2) {
+      return NextResponse.json(
+        { error: "Please upload at least 2 PDF files." },
+        { status: 400 }
+      )
     }
-    
+
+    const mergedPdf = await PDFDocument.create()
+
+    for (const file of files) {
+
+      validateFile(file, ["application/pdf"])
+
+      const bytes = await file.arrayBuffer()
+
+      const pdf = await PDFDocument.load(bytes)
+
+      const pages = await mergedPdf.copyPages(
+        pdf,
+        pdf.getPageIndices()
+      )
+
+      pages.forEach((page) => {
+        mergedPdf.addPage(page)
+      })
+    }
+
+    const pdfBytes = await mergedPdf.save()
+
+    return new NextResponse(pdfBytes, {
+      headers: {
+        "Content-Type": "application/pdf",
+        "Content-Disposition":
+          'attachment; filename="merged.pdf"'
+      }
+    })
+
+  } catch (err) {
+
+    return NextResponse.json(
+      { error: err.message || "Something went wrong" },
+      { status: 500 }
+    )
+  }
 }
