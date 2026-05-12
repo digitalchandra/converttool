@@ -58,6 +58,11 @@ export default function Home() {
 
   const devTools = [
     {
+      title: "Online Notepad ",
+      link: "/utility/onlinenotepad",
+      desc: "Easy and free online Notepad ",
+    },
+    {
       title: "JSON Formatter",
       link: "/json-formatter",
       desc: "Format and beautify JSON data.",
