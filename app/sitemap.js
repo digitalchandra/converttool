@@ -7,42 +7,45 @@ export default function sitemap() {
         lastModified: new Date(),
       },
       {
-        url: `${baseUrl}/png-to-jpeg`,
+        url: `${baseUrl}/image/png-to-jpeg`,
         lastModified: new Date(),
       },
       {
-        url: `${baseUrl}/jpeg-to-png`,
+        url: `${baseUrl}/image/jpeg-to-png`,
         lastModified: new Date(),
       },
       {
-        url: `${baseUrl}/webp-to-jpg`,
+        url: `${baseUrl}/image/webp-to-jpg`,
         lastModified: new Date(),
       },
       {
-        url:`${baseUrl}/webp-to-png`,
+        url:`${baseUrl}/image/webp-to-png`,
         lastModified:new Date(),
       },
       {
-        url: `${baseUrl}/svg-to-png`,
+        url: `${baseUrl}/image/svg-to-png`,
         lastModified : new Date(),
       },
       {
-        url: `${baseUrl}/jpg-to-webp`,
+        url: `${baseUrl}/image/jpg-to-webp`,
         lastModified : new Date(),
       },
       {
-        url: `${baseUrl}/gif-to-jpg`,
+        url: `${baseUrl}/image/gif-to-jpg`,
         lastModified: new Date(),
       },
       {
-        url : `${baseUrl}/heic-to-jpg`,
+        url : `${baseUrl}/image/heic-to-jpg`,
         lastModified : new Date(),
       },
       {
-        url: `${baseUrl}/webp-to-png`,
+        url: `${baseUrl}/image/webp-to-png`,
         lastModified : new Date(),
       },
-
+      {
+        url:`${baseUrl}/utility/onlinenotepad`,
+        lastModified : new Date(),
+      },
 
     ]
   }

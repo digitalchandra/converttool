@@ -12,13 +12,14 @@ export const metadata = {
     "online utility tools",
     "developer tools online",
     "free base64 tools",
-    "csv json converter online"
+    "csv json converter online",
+    "online notepad"
   ],
   openGraph: {
     title: "Free Online Utility Tools",
     description:
       "Convert Base64, CSV, JSON and more using free online developer utilities.",
-    url: "https://yourdomain.com/utility",
+    url: "https://www.converttool.io/utility",
     siteName: "Convert Tools",
     type: "website"
   }
@@ -27,6 +28,11 @@ export const metadata = {
 export default function Page() {
 
   const tools = [
+    {
+      title: "Online Notepad",
+      description: "Encode text or files into Base64 format instantly.",
+      link: "/utility/onlinenotepad"
+    },
     {
       title: "Base64 Encoder",
       description: "Encode text or files into Base64 format instantly.",
