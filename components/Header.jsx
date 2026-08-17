@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image";
 
 export default function Header() {
 
@@ -13,8 +14,15 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold text-blue-600">
-          ConvertTool
+        <Link href="/" className="flex items-center">
+            <Image
+              src="/converttoollogo.webp"
+              alt="ConvertTool"
+              width={230}
+              height={62}
+              priority
+              className="h-10 w-auto object-contain"
+            />
         </Link>
 
         {/* Desktop Menu */}

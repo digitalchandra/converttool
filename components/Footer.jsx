@@ -1,5 +1,5 @@
 import Link from "next/link"
-
+import Image from "next/image";
 export default function Footer(){
 
   return (
@@ -11,9 +11,16 @@ export default function Footer(){
         {/* Logo */}
         <div>
 
-          <h2 className="text-xl font-bold text-white mb-3">
-            ConvertTool
-          </h2>
+        <Link href="/" className="flex items-center">
+            <Image
+              src="/whitelogo.webp"
+              alt="ConvertTool"
+              width={230}
+              height={62}
+              priority
+              className="h-10 w-auto object-contain"
+            />
+        </Link>
 
           <p className="text-sm">
             Free online tools to convert images. 
