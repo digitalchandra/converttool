@@ -67,7 +67,7 @@ export default function Footer(){
         <div>
 
           <h3 className="font-semibold text-white mb-3">
-            Company
+            Important Link
           </h3>
 
           <ul className="space-y-2 text-sm">
@@ -81,7 +81,7 @@ export default function Footer(){
             </li>
 
             <li>
-              <Link href="/privacy">Privacy Policy</Link>
+              <Link href="/privacy-policy">Privacy Policy</Link>
             </li>
 
           </ul>
